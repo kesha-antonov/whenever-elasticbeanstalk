@@ -9,13 +9,13 @@ Gem::Specification.new do |gem|
   gem.platform      = Gem::Platform::RUBY
   gem.authors       = ["Chad McGimpsey","Joel Courtney","Taylor Boyko"]
   gem.email         = ["chad.mcgimpsey@gmail.com","euphemize@gmail.com","taylorboyko@gmail.com"]
-  gem.description   = %q{Use Whenever on AWS Elastic Beanstalk}
-  gem.summary       = %q{Allows you to run cron jobs easily on one or all AWS Elastic Beanstalk instances.}
+  gem.description   = %q{Use Whenever on Aws Elastic Beanstalk}
+  gem.summary       = %q{Allows you to run cron jobs easily on one or all Aws Elastic Beanstalk instances.}
   gem.homepage      = "https://github.com/dignoe/whenever-elasticbeanstalk"
   gem.license       = 'MIT'
 
   gem.add_dependency('whenever','~> 0.9.2')
-  gem.add_dependency('aws-sdk', '>= 1.50.0')
+  gem.add_dependency('aws-sdk', '>= 2.0.0')
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }

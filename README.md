@@ -1,9 +1,9 @@
 # WARNING
-AWS has recently made changes to their EB ENV variables that are catastrophic for much of the rails deployment approaches for EB. This includes whenever-elasticbeanstalk. We are investigating how we can address these issues. Please see [Issue 18](https://github.com/dignoe/whenever-elasticbeanstalk/issues/18) for further details. Will update when a resolution is available.
+Aws has recently made changes to their EB ENV variables that are catastrophic for much of the rails deployment approaches for EB. This includes whenever-elasticbeanstalk. We are investigating how we can address these issues. Please see [Issue 18](https://github.com/dignoe/whenever-elasticbeanstalk/issues/18) for further details. Will update when a resolution is available.
 
 # Whenever::Elasticbeanstalk
 
-Whenever-elasticbeanstalk is an extension gem to [Whenever](https://github.com/javan/whenever) that automatically ensures that one instance in an AWS Elastic Beanstalk environment is set as leader. This allows you to run cron jobs on all instances, or just on the leader. This is required since Elastic Beanstalk may start or stop any instance as it scales up or down.
+Whenever-elasticbeanstalk is an extension gem to [Whenever](https://github.com/javan/whenever) that automatically ensures that one instance in an Aws Elastic Beanstalk environment is set as leader. This allows you to run cron jobs on all instances, or just on the leader. This is required since Elastic Beanstalk may start or stop any instance as it scales up or down.
 
 ## Installation
 
@@ -31,7 +31,7 @@ $ cd /apps/my-great-project
 $ wheneverize-eb .
 ```
 
-This will create an initial `config/schedule.rb` file for you with the `ensure_leader` job set to run every minute. It will also create a `.ebextensions/cron.config` file that will automatically choose a leader on environment initialization, and start up Whenever with the correct `leader` role. Lastly, it creates the `config/whenever-elasticbeanstalk.yml` file that will contain your AWS credentials for retrieving your environment information.
+This will create an initial `config/schedule.rb` file for you with the `ensure_leader` job set to run every minute. It will also create a `.ebextensions/cron.config` file that will automatically choose a leader on environment initialization, and start up Whenever with the correct `leader` role. Lastly, it creates the `config/whenever-elasticbeanstalk.yml` file that will contain your Aws credentials for retrieving your environment information.
 
 ### Manually updating schedule
 
@@ -45,7 +45,7 @@ end
 
 ### EC2 Instance IAM Role Permissions
 
-In order for the scripts to work, you need to ensure that the EC2 Instance Role has access to EC2 instances and tags (further reading at [AWS Documentation](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.roles.aeb.html) ). Ensure that your EC2 instance has at a minimum the following permissions:
+In order for the scripts to work, you need to ensure that the EC2 Instance Role has access to EC2 instances and tags (further reading at [Aws Documentation](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AwsHowTo.iam.roles.aeb.html) ). Ensure that your EC2 instance has at a minimum the following permissions:
 
 Example policy:
 ```json
@@ -69,7 +69,7 @@ Example policy:
 }
 ```
 
-Make sure to add the `RACK_ENV` environment variable to your environment if you haven't already done so. This variable is not created automatically by AWS. You can add the following line to your `.elasticbeanstalk/optionsettings.appname-env` file:
+Make sure to add the `RACK_ENV` environment variable to your environment if you haven't already done so. This variable is not created automatically by Aws. You can add the following line to your `.elasticbeanstalk/optionsettings.appname-env` file:
 ```yaml
 RACK_ENV=staging
 ```
